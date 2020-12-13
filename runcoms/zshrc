@@ -11,3 +11,15 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# Theme
+prompt pure
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias e=${EDITOR:-vim}
+alias v=e
+
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh
