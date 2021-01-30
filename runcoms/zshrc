@@ -21,5 +21,25 @@ alias ....="cd ../../.."
 alias e=${EDITOR:-vim}
 alias v=e
 
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-source /usr/local/opt/chruby/share/chruby/auto.sh
+source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/Users/pierre/.sdkman"
+[[ -s "/Users/pierre/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/pierre/.sdkman/bin/sdkman-init.sh"
+
+# Prevent "zsh: no matches found" errors, with commands like `git checkout @^`
+# https://github.com/ohmyzsh/ohmyzsh/issues/31#issuecomment-359728582
+unsetopt nomatch
+
+
+# ~/.zshenv is eval'd early on, before /etc/zprofile which initializes the path
+# with stuff from /etc/path.d, for reasons I don't understand at this point, it
+# also uses other sources since I saw ~/.rubies and sdkman stuff in there
+#
+# Anyway, this will add this path at the beginning of PATH and that's what I
+# want, 😓
+#
+# see: https://github.com/sorin-ionescu/prezto/tree/master/runcoms
+# Make the new brew path the preferred one:
+export PATH=/opt/homebrew/bin:$PATH
