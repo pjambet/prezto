@@ -40,6 +40,14 @@ unsetopt nomatch
 # Anyway, this will add this path at the beginning of PATH and that's what I
 # want, 😓
 #
+# EDIT: I FIGURED IT OUT!
+# path_helper doesn't erase what's already there, it keeps it, but it prepends
+# its own default stuff, meaning that if I were to export this PATH here, it'd
+# be one of the first things in there, with the cargo stuff, and then the
+# default stuff would take precedence, include /usr/local/bin
+#
+# Doing it here means we do prepend this path! We win!
+#
 # see: https://github.com/sorin-ionescu/prezto/tree/master/runcoms
 # Make the new brew path the preferred one:
 export PATH=/opt/homebrew/bin:$PATH
